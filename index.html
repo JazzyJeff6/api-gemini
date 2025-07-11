@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="./assets/logo.png" alt="logo.esports">
+    </header>
+
+    <main>
+        <section>
+            <div>
+                <h2 class="title">Assistente de Meta</h2>
+                <p>
+                    Pergunte sobre estratégias, build e dicas para seus jogos!
+                </p>
+                <form id="form">
+                    <input id="apiKey" type="password" placeholder="Informe a API do Gemini">
+
+                    <select id="gameSelect">
+                        <option value="">Selecione um jogo</option>
+                        <option value="Valorant">Valorant</option>
+                        <option value="lol">LoL</option>
+                        <option value="csgo">CS:GO</option>
+
+                    </select>
+
+                    <input id="questionInput" type="text" placeholder="Ex: Melhor build">
+
+                    <button id="askButton">
+                        Perguntar
+                    </button>
+                </form>
+                <div id="aiResponse" class="hidden">
+                    <div class="response-content">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
