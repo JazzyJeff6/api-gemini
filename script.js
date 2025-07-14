@@ -4,6 +4,18 @@ const questionInput = document.getElementById('questionInput')
 const askButton = document.getElementById('askButton')
 const aiResponse = document.getElementById('aiResponse')
 const form = document.getElementById('form')
+const sidebar = document.getElementById('history')
+const toggleSidebarBtn = document.getElementById('toggleSidebarBtn')
+const body = document.body
+
+
+const toggleSidebar = () => {
+    sidebar.classList.toggle('closed')
+    body.classList.toggle('sidebar-closed')
+}
+
+toggleSidebarBtn.addEventListener('click', toggleSidebar);
+
 
 const markdownToHTML = (text) => {
     const converter = new showdown.Converter()
@@ -186,8 +198,26 @@ const enviarFormulario = async (event) => {
 
     try{
       const text = await perguntarIA(question, game, apiKey)
-        aiResponse.querySelector('.response-content').innerHTML = markdownToHTML(text)
-        aiResponse.classList.remove('hidden')
+    aiResponse.querySelector('.response-content').innerHTML = markdownToHTML(text)
+    aiResponse.classList.remove('hidden')
+
+        const template = document.getElementById('template-button')
+        const newButton = template.cloneNode(true)
+
+        newButton.removeAttribute('id')
+        newButton.classList.remove('hidden')
+        newButton.querySelector('.question-text').textContent = question
+
+        newButton.addEventListener('click', () => {
+          questionInput.value = question
+          questionInput.focus()
+          if (sidebar.classList.contains('closed')) {
+            toggleSidebar();
+          }
+})
+
+            document.getElementById('history').appendChild(newButton)
+
 
     } catch(error){
         console.log('Erro: ', error)
@@ -198,4 +228,6 @@ const enviarFormulario = async (event) => {
     }
 
 }
+
+
 form.addEventListener('submit', enviarFormulario)

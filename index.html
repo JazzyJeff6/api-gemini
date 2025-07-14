@@ -12,9 +12,18 @@
 <body>
     <header>
         <img src="./assets/logo.png" alt="logo.esports">
+        <button id="toggleSidebarBtn" class="sidebar-toggle-btn">☰</button>
     </header>
 
     <main>
+        <section id="history" class="history-sidebar" >
+            <h2 class="history-title">Histórico</h2>
+
+            <button class="history-item  hidden" id="template-button">
+                <span class="icon">🔁</span>
+                <span class="question-text"></span>
+            </button>
+        </section>
         <section>
             <div>
                 <h2 class="title">Assistente de Meta</h2>
@@ -32,7 +41,7 @@
 
                     </select>
 
-                    <input id="questionInput" type="text" placeholder="Ex: TIre sua duvida de builds, estratégias etc!">
+                    <input id="questionInput" type="text" placeholder="Ex: Tire sua duvida de builds, estratégias etc!">
 
                     <button id="askButton">
                         Perguntar

@@ -10,9 +10,23 @@ body{
     background-position: top center;
     background-color: #121214;
     color: white;
+    min-height: 100vh;
+    position: relative;
+    padding-left: 300px;
+    box-sizing: border-box;
+    transition: padding-left 0.3s ease-in-out
 }
 
-body *{
+body.sidebar-closed{
+    padding-left: 0;
+}
+
+body.sidebar-closed .sidebar-toggle-btn {
+    left: 10px;
+}
+
+
+body *{ 
     font-family: "Inter", sans-serif;
     line-height: 160%;
 }
@@ -29,6 +43,7 @@ header img{
 main{
     max-width: 36rem;
     width: 90%;
+    /* margin-left: 300px; */
     margin: 3rem auto;
 }
 
@@ -54,7 +69,7 @@ letter-spacing: -0.18px;
 color: #a1a1aa;
 }
 
-main section{
+main section:not(#history){
     opacity: 0;
     transform: translateY(2rem);
 
@@ -90,7 +105,7 @@ input{
     flex: 1;
 }
 
-button{
+button::not(#toggleSidebarBtn):not(.history-item){
     width: 100%;
     border: 0;
     background-image: linear-gradient(150deg,#9572FC 0%, #43e7ad 50%, #e2d45c 100% );
@@ -140,12 +155,94 @@ button:disabled{
     animation: pulse 1s infinite;
 }
 
-.hidden{
-    display: none;
-}
-
 @keyframes pulse{
     50%{
         opacity: 0.5;
     }
+}
+
+
+.history-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 300px;
+  z-index: 1000;
+  background-color: #1e1e1e;
+  background-image: none;
+  color: #a38eca;
+  padding: 16px;
+  border-radius: 0 12px 12px 0;
+  font-family: 'Inter', sans-serif;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.history-sidebar.closed{
+    transform: translateX(-100%);
+}
+
+
+.sidebar-toggle-btn{
+    all: unset;
+    background: #2a2634; 
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: fixed;
+    top: 20px;
+    left: 310px;
+    z-index: 1001;
+    transition: left 0.3s ease-in-out;
+}
+
+.history-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d1d5db;
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+
+/* Botão de pergunta */
+.history-item {
+  width: 100%;
+  background-color: #282828 ;
+  border: none;
+  color: #d1d5db;
+  text-align: left;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.history-item:hover {
+  background-color: #2d2d2d;
+}
+
+.history-item .icon {
+  margin-right: 10px;
+  color: #7dd3fc;
+  font-size: 16px;
+}
+
+.history-item .question-text {
+  flex: 1;
+  font-weight: 500;
+  color: #e5e7eb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hidden{
+    display: none;
 }
