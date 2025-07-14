@@ -161,9 +161,6 @@ button:disabled{
     }
 }
 
-.askButton{
-    border-radius: 5px;
-}
 
 .history-sidebar {
   position: fixed;
